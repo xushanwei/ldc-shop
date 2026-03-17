@@ -44,8 +44,10 @@ export function BuyButton({ productId, price, productName, disabled, quantity = 
         try {
             const p = await getUserPoints()
             setPoints(p)
+            setUsePoints(p > 0)
         } catch (e) {
             console.error(e)
+            setUsePoints(false)
         } finally {
             setPointsLoading(false)
         }
